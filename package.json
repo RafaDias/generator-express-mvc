@@ -1,6 +1,6 @@
 {
   "name": "generator-express-mvc",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Express generator for mvc projects.",
   "homepage": "https://github.com/RafaDias/express-mvc-scaffolding",
   "author": {
