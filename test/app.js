@@ -12,12 +12,13 @@ describe('generator-express-mvc:app', function () {
 
   it('creates files for mvc project', function () {
     assert.file([
+      'bower.json',
+      'package.json',
       'server.js',
       'app/controllers/home.js',
-      'app/routes/home.js',
       'app/views/home.ejs',
-      'app/models/model.js',
-      'config/database.js'
+      'app/routes/home.js',
+      'app/models/model.js'
     ]);
   });
 });

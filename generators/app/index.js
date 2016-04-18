@@ -1,40 +1,35 @@
 'use strict';
-//Require dependencies
+// Require dependencies
 var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
 
-
-module.exports = yeoman.generators.Base.extend({
-  //Configurations will be loaded here.
-  //Ask for user input
-  prompting: function() {
+module.exports = yeoman.Base.extend({
+  prompting: function () {
     var done = this.async();
     this.prompt({
       type: 'input',
       name: 'name',
       message: 'Your project name',
-      //Defaults to the project's folder name if the input is skipped
+      // Defaults to the project's folder name if the input is skipped
       default: this.appname
-    }, function(answers) {
-      this.props = answers
+    }, function (answers) {
+      this.props = answers;
       this.log(answers.name);
       done();
     }.bind(this));
   },
   writing: {
-  //Copy the configuration files
+  // Copy the configuration files
     config: function () {
       this.fs.copyTpl(
           this.templatePath('_package.json'),
           this.destinationPath('package.json'), {
-              name: this.props.name
+            name: this.props.name
           }
       );
       this.fs.copyTpl(
           this.templatePath('_bower.json'),
           this.destinationPath('bower.json'), {
-              name: this.props.name
+            name: this.props.name
           }
       );
       this.fs.copy(
@@ -42,30 +37,30 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('.bowerrc')
       );
     },
-    //Copy application files
-    app: function() {
-      //Server file
+    // Copy application files
+    app: function () {
+      // Server file
       this.fs.copyTpl(
         this.templatePath('_server.js'),
         this.destinationPath('server.js'));
-      
-      /////Configuration file
+
+      // Configuration file
       this.fs.copy(
         this.templatePath('_config/_express.js'),
         this.destinationPath('config/express.js'));
-      
+
       // MVC Folder structure - Controller
       this.fs.copy(
         this.templatePath('_app/_controllers/_home.js'),
         this.destinationPath('app/controllers/home.js'));
-      //                      - Models
+      // MVC Folder structure - Models
       this.fs.copyTpl(
         this.templatePath('_app/_models/_model.js'),
         this.destinationPath('app/models/model.js'), {
           name: this.props.name
         }
       );
-      //                      - Views
+      // MVC Folder structure - Views
       this.fs.copyTpl(
         this.templatePath('_app/_views/_home.ejs'),
         this.destinationPath('app/views/home.ejs'), {
@@ -89,9 +84,9 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('public/js/app.js')
       );
     },
-    //Install Dependencies
-    install: function() {
+    // Install Dependencies
+    install: function () {
       this.installDependencies();
     }
-  },
+  }
 });
