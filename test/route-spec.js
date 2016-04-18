@@ -12,8 +12,9 @@ describe('Test Instance', function () {
 describe('Test GET', function () {
   var server;
   before(function () {
-    server = http.createServer(require('../generators/app/templates/_config/_express')());
-    server.listen(3000);
+    var app = require('../generators/app/templates/_config/_express')();
+    server = http.createServer(app);
+    server.listen(app.get('port'));
   });
 
   after(function () {
