@@ -1,0 +1,15 @@
+{
+    "name": "<%= name %>",    
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "ejs": "^2.4.1",
+        "express": "^4.13.4",
+        "express-load": "^1.1.15",
+        "body-parser": "^1.14.0",
+        "cookie-parser": "~1.0.1",
+        "morgan": "^1.6.1",
+        "helmet": "^0.4.2"
+    }     
+}
