@@ -10,9 +10,14 @@ describe('generator-express-mvc:app', function () {
       .on('end', done);
   });
 
-  it('creates files', function () {
+  it('creates files for mvc project', function () {
     assert.file([
-      'dummyfile.txt'
+      'server.js',
+      'app/controllers/home.js',
+      'app/routes/home.js',
+      'app/views/home.ejs',
+      'app/models/model.js',
+      'config/database.js'
     ]);
   });
 });

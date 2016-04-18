@@ -1,13 +1,13 @@
-const express = require('express');
-const load = require('express-load');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const helmet = require('helmet');
-const morgan = require('morgan');
+var express = require('express');
+var load = require('express-load');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var helmet = require('helmet');
+var morgan = require('morgan');
 
 module.exports = function() {
-  
-  const app = express();
+
+  var app = express();
 
   //Set port to env.Port or default to 8080
   app.set('port', process.env.PORT || 8080);
@@ -24,13 +24,13 @@ module.exports = function() {
 
   // setup the logger
   app.use(morgan("short"));
-  
+
   // to support JSON-encoded bodies
-  app.use( bodyParser.json() );       
-  
+  app.use( bodyParser.json() );
+
   // to support URL-encoded bodies
   app.use(bodyParser.urlencoded({extended: true}));
-  
+
   app.use(cookieParser());
 
   //Use the public folder for static files
